@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+                                  http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+              version="2.0" metadata-complete="false">
+
+    <!-- DAO Bean -->
+    <managed-bean>
+        <managed-bean-name>claimDao</managed-bean-name>
+        <managed-bean-class>com.infinite.jsf.admin.daoImpl.ClaimDAOImpl</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Model Beans -->
+    <managed-bean>
+        <managed-bean-name>claim</managed-bean-name>
+        <managed-bean-class>com.infinite.jsf.admin.model.Claim</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>provider</managed-bean-name>
+        <managed-bean-class>com.infinite.jsf.admin.model.Provider</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>recipient</managed-bean-name>
+        <managed-bean-class>com.infinite.jsf.admin.model.Recipient</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+   <managed-bean>
+   <managed-bean-name>claimHistoryDao</managed-bean-name>
+   <managed-bean-class>com.infinite.jsf.admin.daoImpl.ClaimHistoryDAOImpl</managed-bean-class>
+   <managed-bean-scope>session</managed-bean-scope>
+   </managed-bean>
+    <managed-bean>
+        <managed-bean-name>subscribe</managed-bean-name>
+        <managed-bean-class>com.infinite.jsf.admin.model.Subscribe</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean>
+        <managed-bean-name>paymentHistory</managed-bean-name>
+        <managed-bean-class>com.infinite.jsf.admin.model.PaymentHistory</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Controller Bean: Claim Search -->
+    <managed-bean>
+        <managed-bean-name>claimController</managed-bean-name>
+        <managed-bean-class>com.infinite.jsf.admin.controller.ClaimController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+
+        <managed-property>
+            <property-name>claimDao</property-name>
+            <property-class>com.infinite.jsf.admin.dao.ClaimDAO</property-class>
+            <value>#{claimDao}</value>
+        </managed-property>
+
+        <managed-property>
+            <property-name>claim</property-name>
+            <property-class>com.infinite.jsf.admin.model.Claim</property-class>
+            <value>#{claim}</value>
+        </managed-property>
+
+        <managed-property>
+            <property-name>provider</property-name>
+            <property-class>com.infinite.jsf.admin.model.Provider</property-class>
+            <value>#{provider}</value>
+        </managed-property>
+
+        <managed-property>
+            <property-name>recipient</property-name>
+            <property-class>com.infinite.jsf.admin.model.Recipient</property-class>
+            <value>#{recipient}</value>
+        </managed-property>
+
+        <managed-property>
+            <property-name>subscribe</property-name>
+            <property-class>com.infinite.jsf.admin.model.Subscribe</property-class>
+            <value>#{subscribe}</value>
+        </managed-property>
+    </managed-bean>
+
+    <!-- DAO Bean for ProcessClaim -->
+<managed-bean>
+    <managed-bean-name>processClaimDAO</managed-bean-name>
+    <managed-bean-class>com.infinite.jsf.admin.daoImpl.ProcessClaimDAOImpl</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+</managed-bean>
+<managed-bean>
+    <managed-bean-name>claimHistory</managed-bean-name>
+    <managed-bean-class>com.infinite.jsf.admin.model.ClaimHistory</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+</managed-bean>
+
+<!-- Controller Bean for ProcessClaim -->
+<managed-bean>
+    <managed-bean-name>processClaimController</managed-bean-name>
+    <managed-bean-class>com.infinite.jsf.admin.controller.ProcessClaimController</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+
+    <managed-property>
+        <property-name>processClaimDAO</property-name>
+        <property-class>com.infinite.jsf.admin.daoImpl.ProcessClaimDAOImpl</property-class>
+        <value>#{processClaimDAO}</value>
+    </managed-property>
+    
+      <managed-property>
+        <property-name>claimHistory</property-name>
+        <property-class>com.infinite.jsf.admin.model.ClaimHistory</property-class>
+        <value>#{claimHistory}</value>
+        
+    </managed-property>
+    
+    <managed-property>
+        <property-name>claimHistoryDao</property-name>
+        <property-class>com.infinite.jsf.admin.daoImpl.ClaimHistoryDAOImpl</property-class>
+        <value>#{claimHistoryDao}</value>
+        
+    </managed-property>
+    
+     <managed-property> 
+            <property-name>paymentHistory</property-name>
+            <property-class>com.infinite.jsf.admin.model.PaymentHistory</property-class>
+            <value>#{paymentHistory}</value>
+        </managed-property>
+    
+
+</managed-bean>
+
+    <!-- Payment DAO Bean -->
+    <managed-bean>
+        <managed-bean-name>paymentDAO</managed-bean-name>
+        <managed-bean-class>com.infinite.jsf.admin.daoImpl.PaymentProcessingDAOImpl</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+
+    <!-- Payment Controller -->
+    <managed-bean>
+        <managed-bean-name>paymentController</managed-bean-name>
+        <managed-bean-class>com.infinite.jsf.admin.controller.PaymentController</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+
+        <managed-property>
+            <property-name>paymentDAO</property-name>
+            <value>#{paymentDAO}</value>
+        </managed-property>
+    </managed-bean>
+
+
+</faces-config>

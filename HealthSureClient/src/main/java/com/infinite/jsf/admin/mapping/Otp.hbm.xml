@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.infinite.jsf.admin.model.Otp" table="Otp">
+        <id name="otpId" column="otp_id" type="int">
+            <generator class="increment"/>
+        </id>
+
+        <property name="userName" column="user_name" type="string"/>
+        <property name="otpCode" column="otp_code" type="integer"/>
+        <property name="newPassword" column="new_password" type="string"/>
+        <property name="status" column="status" type="string"/>
+        <property name="createdAt" column="created_at" type="timestamp"/>
+        <property name="expiresAt" column="expires_at" type="timestamp"/>
+        <property name="purpose" column="purpose" type="string"/>
+    </class>
+</hibernate-mapping>

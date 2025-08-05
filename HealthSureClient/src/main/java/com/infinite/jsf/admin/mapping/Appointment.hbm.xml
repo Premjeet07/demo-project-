@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.infinite.jsf.admin.model.Appointment" table="Appointment">
+        <id name="appointmentId" column="appointment_id" type="string">
+            <generator class="assigned"/>
+        </id>
+
+        <many-to-one name="doctor" class="com.infinite.jsf.admin.model.Doctor" column="doctor_id" not-null="true"/>
+        <many-to-one name="recipient" class="com.infinite.jsf.admin.model.Recipient" column="h_id" not-null="true"/>
+        <many-to-one name="availability" class="com.infinite.jsf.admin.model.DoctorAvailability" column="availability_id" not-null="true"/>
+        <many-to-one name="provider" class="com.infinite.jsf.admin.model.Provider" column="provider_id" not-null="true"/>
+
+        <property name="slotNo" column="slot_no" type="integer"/>
+        <property name="requestedAt" column="requested_at" type="timestamp"/>
+        <property name="bookedAt" column="booked_at" type="timestamp"/>
+        <property name="status" column="status" type="string"/>
+        <property name="notes" column="notes" type="text"/>
+    </class>
+</hibernate-mapping>

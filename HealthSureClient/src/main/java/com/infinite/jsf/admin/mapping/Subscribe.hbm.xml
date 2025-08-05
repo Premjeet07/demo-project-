@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 04-Oct-2023, 9:34:49 am by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+  <class name="com.infinite.jsf.admin.model.Subscribe" table="subscribe">
+    <id name="subscribeId" column="subscribe_id"/>
+    <many-to-one name="recipient" class="com.infinite.jsf.admin.model.Recipient" column="h_id"/>
+<many-to-one name="insuranceCoverageOption" class="com.infinite.jsf.admin.model.InsuranceCoverageOption" column="coverage_id" not-null="true" />
+    <property name="subscribeDate" column="subscribe_date"/>
+    <property name="expiryDate" column="expiry_date"/>
+    <property name="status"/>
+    <property name="totalPremium" column="total_premium"/>
+    <property name="amountPaid" column="amount_paid"/>
+    <property name="remainingCoverageAmount" column="remaining_coverage_amount" />
+
+    <set name="claims" inverse="true" cascade="all">
+      <key column="subscribe_id"/>
+      <one-to-many class="com.infinite.jsf.admin.model.Claim"/>
+    </set>
+  </class>
+</hibernate-mapping>

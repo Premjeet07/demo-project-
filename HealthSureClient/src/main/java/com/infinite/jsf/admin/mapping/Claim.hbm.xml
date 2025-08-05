@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.infinite.jsf.admin.model.Claim" table="Claims">
+		<id name="claimId" column="claim_id" />
+
+		<many-to-one name="subscribe"
+			class="com.infinite.jsf.admin.model.Subscribe" column="subscribe_id" />
+		<many-to-one name="procedure"
+			class="com.infinite.jsf.admin.model.MedicalProcedure"
+			column="procedure_id" />
+		<many-to-one name="provider"
+			class="com.infinite.jsf.admin.model.Provider" column="provider_id" />
+		<many-to-one name="recipient"
+			class="com.infinite.jsf.admin.model.Recipient" column="h_id" />
+		<set name="paymentHistories" table="payment_history"
+     inverse="true" lazy="false" cascade="all">
+
+			<key column="claim_id" />
+			<one-to-many
+				class="com.infinite.jsf.admin.model.PaymentHistory" />
+		</set>
+
+		<property name="claimStatus">
+			<column name="claim_status" not-null="true" />
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">com.infinite.jsf.admin.model.ClaimStatus</param>
+				<param name="type">12</param>
+			</type>
+		</property>
+
+
+
+		<property name="claimDate" column="claim_date" />
+		<property name="amountClaimed" column="amount_claimed" />
+		<property name="amountApproved" column="amount_approved" />
+
+
+	</class>
+</hibernate-mapping>

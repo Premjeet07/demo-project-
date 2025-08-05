@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.infinite.jsf.admin.model.Medicine" table="Medicines">
+        <id name="medicineId" column="medicine_id">
+            <generator class="assigned"/>
+        </id>
+
+        <property name="medicineName" column="medicine_name" type="string"/>
+        <property name="description" column="description" type="string"/>
+        <property name="quantityInStock" column="quantity_in_stock" type="integer"/>
+        <property name="expiryDate" column="expiry_date" type="date"/>
+        <property name="unitPrice" column="unit_price" type="double"/>
+        <property name="pharmacyId" column="pharmacy_id" type="string"/>
+        <property name="purpose" column="purpose" type="string"/>
+        <property name="batchNo" column="batch_no" type="string"/>
+    </class>
+</hibernate-mapping>

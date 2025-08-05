@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class name="com.infinite.jsf.admin.model.InsuranceCoverageOption" table="Insurance_coverage_option">
+  
+    <id name="coverageId" column="coverage_id"/>
+    
+    <property name="planId" column="plan_id"/>
+    <property name="premiumAmount" column="premium_amount"/>
+    <property name="coverageAmount" column="coverage_amount"/>
+    <property name="status"/>
+    
+    
+  </class>
+</hibernate-mapping>

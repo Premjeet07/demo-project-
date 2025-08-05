@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.infinite.jsf.admin.model.InsurancePlan" table="Insurance_plan">
+        <id name="planId" column="plan_id">
+            <generator class="assigned"/>
+        </id>
+
+        <property name="companyId" column="company_id" type="string"/>
+        <property name="planName" column="plan_name" type="string"/>
+        <property name="planType" column="plan_type" type="string"/>
+        <property name="minEntryAge" column="min_entry_age" type="integer"/>
+        <property name="maxEntryAge" column="max_entry_age" type="integer"/>
+        <property name="description" column="description" type="string"/>
+        <property name="availableCoverAmounts" column="available_cover_amounts" type="string"/>
+        <property name="waitingPeriod" column="waiting_period" type="string"/>
+        <property name="createdOn" column="created_on" type="date"/>
+        <property name="expireDate" column="expire_date" type="date"/>
+        <property name="periodicDiseases" column="periodic_diseases" type="string"/>
+    </class>
+</hibernate-mapping>
