@@ -514,7 +514,7 @@ table.claim-table {
 
         <div class="pagination-controls">
         
-            <h:outputText value="Showing #{claimController.showingFrom}-#{claimController.showingTo} out of #{claimController.totalRecords}" styleClass="total-info" />
+            <h:outputText value="#{claimController.showingFrom}-#{claimController.showingTo} of #{claimController.totalRecords}" styleClass="total-info" />
             <div class="pages">
 	            <h:commandButton value="Previous" action="#{claimController.previousPage}" disabled="#{claimController.previousDisabled}" styleClass="pagination-btn" />
 	            <span class="page-info">

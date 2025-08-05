@@ -43,8 +43,8 @@ public class PaymentController {
     public void setSortColumn(String sortColumn) { this.sortColumn = sortColumn; }
     
     public int getTotalPages() {
-        if (selectedClaimsList == null || selectedClaimsList.isEmpty()) return 1;
-        return (int) Math.ceil((double) selectedClaimsList.size() / pageSize);
+        int totalRecords = selectedClaimsList == null ? 0 : selectedClaimsList.size();
+        return (int) Math.ceil((double) totalRecords / pageSize);
     }
     
     
@@ -70,19 +70,35 @@ public class PaymentController {
 
     // Pagination Logic
     public List<ClaimSelection> getPaginatedClaimsList() {
-    	this.selectedClaimsList=getSelectedClaimsList();
-        if (selectedClaimsList == null) return java.util.Collections.emptyList();
+        // Always rebuild
+        this.selectedClaimsList = getSelectedClaimsList();
+
+        int totalRecords = selectedClaimsList == null ? 0 : selectedClaimsList.size();
+        int totalPages = (int) Math.ceil((double) totalRecords / pageSize);
+
+        // 1. Always clamp to valid range
+        if (currentPage < 1) currentPage = 1;
+        if (currentPage > totalPages) currentPage = totalPages;
+
+        // 2. If no data, return empty
+        if (totalRecords == 0) return java.util.Collections.emptyList();
+
+        // 3. Calculate indices
         int fromIndex = (currentPage - 1) * pageSize;
-        int toIndex = Math.min(fromIndex + pageSize, selectedClaimsList.size());
-        if (fromIndex > toIndex) {
-            currentPage = 1;
-            fromIndex = 0;
-            toIndex = Math.min(pageSize, selectedClaimsList.size());
+        int toIndex = Math.min(fromIndex + pageSize, totalRecords);
+
+        // 4. Failsafe for bounds (e.g. after deletes, filters)
+        if (fromIndex >= totalRecords) {
+            currentPage = totalPages; // Go back to last valid page
+            fromIndex = Math.max(0, (totalPages - 1) * pageSize);
+            toIndex = totalRecords;
         }
+
         return selectedClaimsList.subList(fromIndex, toIndex);
     }
     public String nextPage() {
-        if (currentPage < getTotalPages()) currentPage++;
+        int totalPages = getTotalPages();
+        if (currentPage < totalPages) currentPage++;
         return null;
     }
     public String previousPage() {
@@ -153,23 +169,43 @@ public class PaymentController {
     }
 
     public String searchByProvider() {
+        if (providerId == null || providerId.trim().isEmpty()) {
+            FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_ERROR, "Please enter a provider ID.", null));
+            return null;
+        }
+
         selectedClaimsList = null;
-        currentPage=1;
+        currentPage = 1;
+        
         List<ClaimSelection> list = getSelectedClaimsList();
+
         if (list == null || list.isEmpty()) {
             FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_WARN,
-                  "No approved claims available for payment for the given provider.", null));
+                    "No approved claims available for payment for the given provider.", null));
         }
+
         return null;
     }
 
     public String processSelectedPayments() {
         try {
+            boolean anySelected = false;
+            List<String> validationErrors = new ArrayList<>();
+
             Map<String, Double> providerAmounts = new HashMap<>();
 
             for (ClaimSelection cs : selectedClaimsList) {
                 if (cs.isSelected()) {
+                    anySelected = true;
+
+                    // Validate payment method
+                    if (cs.getPaymentMethod() == null || cs.getPaymentMethod().trim().isEmpty()) {
+                        validationErrors.add("⚠ Please select a payment method for Claim ID: " + cs.getClaim().getClaimId());
+                        continue;
+                    }
+
                     Claim claim = cs.getClaim();
                     String providerId = claim.getProvider().getProviderId();
                     double amt = claim.getAmountClaimed();
@@ -196,6 +232,23 @@ public class PaymentController {
                 }
             }
 
+            // No checkbox selected
+            if (!anySelected) {
+                FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_WARN, "⚠ Please select at least one claim to process.", null));
+                return null;
+            }
+
+            // Payment method missing for some selected claims
+            if (!validationErrors.isEmpty()) {
+                for (String err : validationErrors) {
+                    FacesContext.getCurrentInstance().addMessage(null,
+                        new FacesMessage(FacesMessage.SEVERITY_WARN, err, null));
+                }
+                return null;
+            }
+
+            // Update provider account balances
             for (Map.Entry<String, Double> entry : providerAmounts.entrySet()) {
                 paymentDAO.updateAccountAmountPaid(entry.getKey(), entry.getValue());
             }
@@ -251,6 +304,10 @@ public class PaymentController {
 //		}
     }
     public String backToSearchClaims() {
-    	return "claimResult.jsf?faces-redirect=true";
+    	return "searchClaims.jsf?faces-redirect=true";
     }
+
+	// --- validations for update ---
+
+
 }
