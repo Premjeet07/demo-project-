@@ -4,11 +4,8 @@ import com.infinite.jsf.admin.dao.ProcessClaimDAO;
 import com.infinite.jsf.admin.model.Claim;
 import com.infinite.jsf.admin.model.ClaimHistory;
 import com.infinite.jsf.admin.model.ClaimStatus;
-import com.infinite.jsf.admin.model.InsuranceCoverageOption;
 import com.infinite.jsf.admin.model.PaymentHistory;
 import com.infinite.jsf.admin.model.PaymentStatus;
-import com.infinite.jsf.admin.model.Subscribe;
-
 import java.util.List;
 
 import org.hibernate.Query;

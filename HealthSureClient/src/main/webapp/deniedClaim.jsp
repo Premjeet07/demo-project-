@@ -177,9 +177,10 @@
             </div>
         </div>
         <div class="search-btn-row">
-			<h:commandButton value="BACK"
-				action="searchClaims" styleClass="btn-cancel" />
-		</div>
+				<h:commandButton value="BACK"
+					action="#{processClaimController.backToClaims}"
+					styleClass="btn-cancel" />
+					</div>
     </h:form>
 </div>
 </body>

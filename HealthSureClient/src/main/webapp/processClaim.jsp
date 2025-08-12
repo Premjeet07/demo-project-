@@ -290,7 +290,7 @@ h\:messages {
 
 				</div>
 				<h:message for="status" style="color:red" />
-				<!-- Approve Reason Dropdown -->
+				<!-- Approve Reason DropDown -->
 				<div id="form:approveReasonDiv" style="display: none;">
 					<div class="row">
 						<span class="label">Approval Reason:</span>
@@ -308,7 +308,7 @@ h\:messages {
 
 
 					</div>
-					<h:message for="approveReason" style="color:red" />
+					<h:message for="approveReason" style="color:red;margin-left: 200px;" />
 				</div>
 				<!-- Deny Reason Dropdown -->
 				<div id="form:denyReasonDiv" style="display: none;">
@@ -325,7 +325,7 @@ h\:messages {
 								itemLabel="Invalid Coverage" />
 							<f:selectItem itemValue="Other" itemLabel="Other (Specify Below)" />
 						</h:selectOneMenu>
-						<h:message for="denyReason" style="color:red" />
+						<h:message for="denyReason" style="color:red;margin-left: 200px;" />
 					</div>
 				</div>
 				<!-- Other Reason Textarea -->
@@ -336,7 +336,7 @@ h\:messages {
 							value="#{processClaimController.otherReason}" rows="3"
 							styleClass="jsf-textarea" />
 					</div>
-					<h:message for="otherReasonTextArea" style="color:red" />
+					<h:message for="otherReasonTextArea" style="color:red;margin-left: 200px;" />
 				</div>
 			</div>
 
@@ -356,10 +356,12 @@ h\:messages {
 				<h:commandButton value="Reset"
 					action="#{processClaimController.reset}" styleClass="btn" />
 			</div>
+			<!-- Cancel Button -->
 			<div class="search-btn-row">
-			<h:commandButton value="Back"
-				action="searchClaims" styleClass="btn-cancel" />
-		</div>
+				<h:commandButton value="BACK"
+					action="#{processClaimController.backToSearchClaims}"
+					styleClass="btn-cancel" />
+					</div>
 		</h:form>
 	</div>
 </body>

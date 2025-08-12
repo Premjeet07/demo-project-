@@ -108,6 +108,11 @@
         <value>#{processClaimDAO}</value>
     </managed-property>
     
+    <managed-property>
+            <property-name>claimController</property-name>
+            <value>#{claimController}</value>
+        </managed-property>
+    
       <managed-property>
         <property-name>claimHistory</property-name>
         <property-class>com.infinite.jsf.admin.model.ClaimHistory</property-class>
@@ -148,6 +153,12 @@
             <property-name>paymentDAO</property-name>
             <value>#{paymentDAO}</value>
         </managed-property>
+    
+    <managed-property>
+            <property-name>claimController</property-name>
+            <value>#{claimController}</value>
+        </managed-property>
+        
     </managed-bean>
 
 

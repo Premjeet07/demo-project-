@@ -9,14 +9,19 @@ import com.infinite.jsf.admin.model.Subscribe;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
+
+import org.apache.log4j.Logger;
+
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+
 public class ClaimController implements Serializable {
 
     private static final long serialVersionUID = 1L;
+	private static final Logger logger = Logger.getLogger(ClaimController.class.getName()); 
 
     private ClaimDAO claimDao;
     private Claim claim;
@@ -60,7 +65,13 @@ public class ClaimController implements Serializable {
     private List<Claim> claimsList;
 
     public String searchClaims() {
+    	
+    	
         try {
+        	this.sortColumn= "claimId";
+        	this.sortAsc= true;
+        	this.currentPage=1;
+        	logger.info("Claim Id  : " + claim.getClaimId());
             FacesContext context = FacesContext.getCurrentInstance();
 
             if (searchType == null || searchType.isEmpty()) {
@@ -127,6 +138,37 @@ public class ClaimController implements Serializable {
                     String userFromDate = fromDateStr != null ? fromDateStr.trim() : null;
                     String userToDate   = toDateStr != null ? toDateStr.trim() : null;
 
+                    // Check if either date is exactly 8 digits and validate as yyyyMMdd
+                    String eightDigitPattern = "^\\d{8}$"; // Strictly 8 digits
+
+                 // Validate strict 8-digit yyyyMMdd if entered
+                    try {
+                        java.text.SimpleDateFormat ymdFormat = new java.text.SimpleDateFormat("yyyyMMdd");
+                        ymdFormat.setLenient(false);
+
+                        if (userFromDate != null && userFromDate.matches("^\\d+$")) {
+                            if (userFromDate.length() != 8) {
+                                throw new IllegalArgumentException("Invalid from date format.");
+                            }
+                            ymdFormat.parse(userFromDate); // throws if like 20251301
+                        }
+
+                        if (userToDate != null && userToDate.matches("^\\d+$")) {
+                            if (userToDate.length() != 8) {
+                                throw new IllegalArgumentException("Invalid to date format.");
+                            }
+                            ymdFormat.parse(userToDate);
+                        }
+
+                    } catch (Exception e) {
+                        context.addMessage(null, new FacesMessage(
+                            FacesMessage.SEVERITY_ERROR,
+                            "Invalid date format. Please enter 8-digit valid date like 20250801.", null
+                        ));
+                        return null;
+                    }
+
+                    // Existing logic
                     String[] patterns = { "yyyy-MM-dd", "yyyy/MM/dd", "yyyyMMdd" };
                     Date parsedFrom = null, parsedTo = null;
 
@@ -155,7 +197,6 @@ public class ClaimController implements Serializable {
                         return null;
                     }
 
-                    // Get today's date without time
                     Calendar todayCal = Calendar.getInstance();
                     todayCal.set(Calendar.HOUR_OF_DAY, 0);
                     todayCal.set(Calendar.MINUTE, 0);
@@ -163,7 +204,6 @@ public class ClaimController implements Serializable {
                     todayCal.set(Calendar.MILLISECOND, 0);
                     Date today = todayCal.getTime();
 
-                    // Check future dates
                     if (parsedFrom.after(today) || parsedTo.after(today)) {
                         context.addMessage(null, new FacesMessage(
                             FacesMessage.SEVERITY_ERROR,
@@ -172,7 +212,6 @@ public class ClaimController implements Serializable {
                         return null;
                     }
 
-                    // Set full-day range
                     Calendar cal = Calendar.getInstance();
                     cal.setTime(parsedFrom);
                     cal.set(Calendar.HOUR_OF_DAY, 0);
@@ -195,8 +234,6 @@ public class ClaimController implements Serializable {
                         return null;
                     }
                     break;
-
-
                 default:
                     context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
                             "Unknown search type selected.", null));
@@ -241,8 +278,16 @@ public class ClaimController implements Serializable {
         this.searchValue = null;
         this.fromDate = null;
         this.toDate = null;
+        this.fromDateStr = null;
+        this.toDateStr = null;
         this.claimsList = null;
-        return null;
+        this.currentPage = 1;
+
+        // Reset sorting
+        this.sortColumn = "claimId";
+        this.sortAsc = true;
+
+        return "searchClaims?faces-redirect=true"; // force full refresh
     }
 
     // Getters and Setters
@@ -335,6 +380,7 @@ public class ClaimController implements Serializable {
         this.searchValue = null;
         this.fromDate = null;
         this.toDate = null;
+        this.claimsList=null;
     }
     private void sortClaimsList() {
         if (claimsList == null) return;
