@@ -379,7 +379,8 @@ public class ProcessClaimController {
 
 	public String backToSearchClaims() {
 		if (claimController != null) {
-			claimController.resetButton(); // Clear all fields in ClaimController
+//			claimController.resetButton(); // Clear all fields in ClaimController
+			claimController.searchClaims();
 		}
 		System.out.println(" back "+flag);
 		flag = false;

@@ -125,31 +125,79 @@ public class PaymentController {
 
         // ⭐️ Overlay user changes if present (otherwise, no-op)
         applyUserEditState(list);
-        sortList();
 
         selectedClaimsList = list;
+        sortList();
+
         return selectedClaimsList;
     }
     private void sortList() {
-        if (selectedClaimsList == null) return;
+        if (selectedClaimsList == null) {
+            System.out.println("[DEBUG] selectedClaimsList is null. Nothing to sort.");
+            return;
+        }
+
+        System.out.println("[DEBUG] Sorting started. Sort Column: " + sortColumn + ", Ascending: " + sortAsc);
+        System.out.println("[DEBUG] Total items before sort: " + selectedClaimsList.size());
+
         selectedClaimsList.sort((cs1, cs2) -> {
+            System.out.println("[DEBUG] Comparing: "
+                + (cs1.getClaim() != null ? cs1.getClaim().getClaimId() : "null")
+                + " vs "
+                + (cs2.getClaim() != null ? cs2.getClaim().getClaimId() : "null")
+            );
+
             int result = 0;
-            switch (sortColumn) {
-                case "claimId":
-                    result = cs1.getClaim().getClaimId().compareTo(cs2.getClaim().getClaimId());
-                    break;
-                case "providerId":
-                    result = cs1.getClaim().getProvider().getProviderId().compareTo(cs2.getClaim().getProvider().getProviderId());
-                    break;
-                case "recipientId":
-                    result = cs1.getClaim().getRecipient().gethId().compareTo(cs2.getClaim().getRecipient().gethId());
-                    break;
-                case "amountClaimed":
-                    result = Double.compare(cs1.getClaim().getAmountClaimed(), cs2.getClaim().getAmountClaimed());
-                    break;
+            try {
+                switch (sortColumn) {
+                    case "claimId":
+                        System.out.println("[DEBUG] Comparing Claim IDs: "
+                            + cs1.getClaim().getClaimId() + " vs " + cs2.getClaim().getClaimId());
+                        result = cs1.getClaim().getClaimId().compareTo(cs2.getClaim().getClaimId());
+                        break;
+
+                    case "providerId":
+                        System.out.println("[DEBUG] Comparing Provider IDs: "
+                            + cs1.getClaim().getProvider().getProviderId()
+                            + " vs " + cs2.getClaim().getProvider().getProviderId());
+                        result = cs1.getClaim().getProvider().getProviderId()
+                            .compareTo(cs2.getClaim().getProvider().getProviderId());
+                        break;
+
+                    case "recipientId":
+                        System.out.println("[DEBUG] Comparing Recipient HIDs: "
+                            + cs1.getClaim().getRecipient().gethId()
+                            + " vs " + cs2.getClaim().getRecipient().gethId());
+                        result = cs1.getClaim().getRecipient().gethId()
+                            .compareTo(cs2.getClaim().getRecipient().gethId());
+                        break;
+
+                    case "amountClaimed":
+                        System.out.println("[DEBUG] Comparing Amount Claimed: "
+                            + cs1.getClaim().getAmountClaimed()
+                            + " vs " + cs2.getClaim().getAmountClaimed());
+                        result = Double.compare(
+                            cs1.getClaim().getAmountClaimed(),
+                            cs2.getClaim().getAmountClaimed()
+                        );
+                        break;
+
+                    default:
+                        System.out.println("[DEBUG] Unknown sort column: " + sortColumn);
+                        break;
+                }
+            } catch (NullPointerException e) {
+                System.out.println("[ERROR] Null value found while comparing. Details: " + e.getMessage());
+                e.printStackTrace();
             }
+
             return sortAsc ? result : -result;
         });
+
+        System.out.println("[DEBUG] Sorting completed.");
+        System.out.println("[DEBUG] First item after sort: " +
+            (selectedClaimsList.isEmpty() ? "No data" :
+                selectedClaimsList.get(0).getClaim().getClaimId()));
     }
 
     // --- Pagination Logic ---
