@@ -125,9 +125,31 @@ public class PaymentController {
 
         // ⭐️ Overlay user changes if present (otherwise, no-op)
         applyUserEditState(list);
+        sortList();
 
         selectedClaimsList = list;
         return selectedClaimsList;
+    }
+    private void sortList() {
+        if (selectedClaimsList == null) return;
+        selectedClaimsList.sort((cs1, cs2) -> {
+            int result = 0;
+            switch (sortColumn) {
+                case "claimId":
+                    result = cs1.getClaim().getClaimId().compareTo(cs2.getClaim().getClaimId());
+                    break;
+                case "providerId":
+                    result = cs1.getClaim().getProvider().getProviderId().compareTo(cs2.getClaim().getProvider().getProviderId());
+                    break;
+                case "recipientId":
+                    result = cs1.getClaim().getRecipient().gethId().compareTo(cs2.getClaim().getRecipient().gethId());
+                    break;
+                case "amountClaimed":
+                    result = Double.compare(cs1.getClaim().getAmountClaimed(), cs2.getClaim().getAmountClaimed());
+                    break;
+            }
+            return sortAsc ? result : -result;
+        });
     }
 
     // --- Pagination Logic ---
@@ -196,27 +218,7 @@ public class PaymentController {
     public int getTotalRecords() {
         return selectedClaimsList == null ? 0 : selectedClaimsList.size();
     }
-    private void sortList() {
-        if (selectedClaimsList == null) return;
-        selectedClaimsList.sort((cs1, cs2) -> {
-            int result = 0;
-            switch (sortColumn) {
-                case "claimId":
-                    result = cs1.getClaim().getClaimId().compareTo(cs2.getClaim().getClaimId());
-                    break;
-                case "providerId":
-                    result = cs1.getClaim().getProvider().getProviderId().compareTo(cs2.getClaim().getProvider().getProviderId());
-                    break;
-                case "recipientId":
-                    result = cs1.getClaim().getRecipient().gethId().compareTo(cs2.getClaim().getRecipient().gethId());
-                    break;
-                case "amountClaimed":
-                    result = Double.compare(cs1.getClaim().getAmountClaimed(), cs2.getClaim().getAmountClaimed());
-                    break;
-            }
-            return sortAsc ? result : -result;
-        });
-    }
+ 
 
     // --- SEARCH ---
 

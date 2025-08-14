@@ -185,6 +185,13 @@ public class ProcessClaimController {
 
 	public String processClaim() {
 		FacesContext context = FacesContext.getCurrentInstance();
+//		 this.status = null;
+//		    this.approveReason = null;
+//		    this.denyReason = null;
+//		    this.otherReason = null;
+//		    this.claimProcessed = false;
+//		    this.finalStatusMessage = null;
+//		    flag = false;
 
 		// 🚦 Always retrieve the most up-to-date claim object from DB
 		Claim latestClaim = processClaimDAO.getClaimById(claim.getClaimId());
@@ -259,7 +266,8 @@ public class ProcessClaimController {
 		// ✅ Show info message (top-of-page if <h:messages/> is placed before details)
 		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
 				"Claim has been " + status.toLowerCase() + " successfully.", null));
-
+		flag = true;
+		System.out.println(" submit "+flag);
 		return "claimUpdated.jsf"; // forward/navigation as needed
 	}
 
@@ -373,6 +381,18 @@ public class ProcessClaimController {
 		if (claimController != null) {
 			claimController.resetButton(); // Clear all fields in ClaimController
 		}
+		System.out.println(" back "+flag);
+		flag = false;
+		System.out.println(" back "+flag);
+		approveReason = null;
+		denyReason = null;
+		otherReason =null;
+		selectedReason =null;
+		status = null;
+		claimProcessed=false;
+//		this.setStatus(null);
+//		this.setApproveReason(null);
+//		this.setDenyReason(null);
 		return "searchClaims?faces-redirect=true";
 	}
 
@@ -380,5 +400,16 @@ public class ProcessClaimController {
 		return "searchClaims?faces-redirect=true";
 
 	}
+	
+	public boolean getFlag() {
+		return flag;
+	}
 
+	public void setFlag(boolean flag) {
+		this.flag = flag;
+	}
+
+	private boolean flag = false;
+
+	
 }

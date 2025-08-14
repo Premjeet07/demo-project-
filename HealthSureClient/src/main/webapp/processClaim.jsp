@@ -152,6 +152,11 @@ h\:messages {
         .btn-cancel:hover {
             background-color: #173a60;
         }
+        .btn:disabled{
+	background: #a5b4fc;
+	cursor: not-allowed;
+}
+ 
 </style>
 <script type="text/javascript">
         var formId = 'form'; // matches h:form id below
@@ -276,6 +281,7 @@ h\:messages {
 			</div>
 
 			<!-- Decision Section -->
+			<h:panelGroup rendered="#{!processClaimController.claimProcessed }">
 			<div class="section">
 				<h3>Decision</h3>
 				<div class="row">
@@ -339,6 +345,7 @@ h\:messages {
 					<h:message for="otherReasonTextArea" style="color:red;margin-left: 200px;" />
 				</div>
 			</div>
+			</h:panelGroup>
 
 
 			<!--<h:panelGroup rendered="#{processClaimController.claimProcessed}">
@@ -351,7 +358,8 @@ h\:messages {
 				<!--       <h:commandButton value="Submit" action="#{processClaimController.processClaim}" styleClass="btn" />   -->
 
 				<h:commandButton value="Submit"
-					action="#{processClaimController.processClaim}" styleClass="btn" />
+					action="#{processClaimController.processClaim}" styleClass="btn" 
+					disabled="#{processClaimController.flag }" />
 
 				<h:commandButton value="Reset"
 					action="#{processClaimController.reset}" styleClass="btn" />

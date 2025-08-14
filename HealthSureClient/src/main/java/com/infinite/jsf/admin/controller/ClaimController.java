@@ -377,10 +377,14 @@ public class ClaimController implements Serializable {
 
     public void searchTypeChanged(ValueChangeEvent event) {
         this.searchType = (String) event.getNewValue();
+        this.searchType = null;
         this.searchValue = null;
         this.fromDate = null;
         this.toDate = null;
-        this.claimsList=null;
+        this.fromDateStr = null;
+        this.toDateStr = null;
+        this.claimsList = null;
+         
     }
     private void sortClaimsList() {
         if (claimsList == null) return;
