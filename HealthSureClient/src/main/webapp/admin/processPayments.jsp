@@ -5,6 +5,8 @@
 	<html>
 <head>
 <title>Process Payments</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 body {
 	background: linear-gradient(115deg, #e3f2fd 60%, #e0f7fa 100%);
@@ -252,7 +254,7 @@ table.payment-table {
 
 </head>
 <body>
-	<jsp:include page="Navbar.jsp" />
+	<jsp:include page="/navbar/NavAdmin.jsp" />
 
 	<div class="container">
 		<h2>Approved Claims for Payment</h2>
@@ -435,14 +437,17 @@ table.payment-table {
 				</div>
 			</h:panelGroup>
 
-			<!-- Cancel Button -->
+			<!-- Back Button -->
 			<div class="search-btn-row">
-				<h:commandButton value="CANCEL"
-					action="#{paymentController.backToSearchClaims}"
+				<h:commandButton value="BACK TO DASHBOARD"
+					action="#{paymentController.backToDashboard}"
 					styleClass="btn-cancel" />
 			</div>
+			
 		</h:form>
 	</div>
 </body>
+    <!-- 📘 Footer -->
+    <jsp:include page="/footer/Footer.jsp" />
 	</html>
 </f:view>

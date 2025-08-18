@@ -7,11 +7,13 @@
 <f:view>
 <head>
 <meta charset="UTF-8">
-<title>Claim Approved</title>
+<title>Claim Denied</title>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
     body {
-        background: linear-gradient(110deg, #e6f1fd 60%, #d8f3fa 100%);
+        background: linear-gradient(110deg, #e3f1fd 60%, #fbeded 100%);
         font-family: 'Rubik', 'Segoe UI', sans-serif;
 		margin-top: 110px;
         padding: 0;
@@ -22,19 +24,19 @@
         background-color: #fff;
         padding: 34px 36px 19px 36px;
         border-radius: 22px;
-        box-shadow: 0 10px 28px 0 #9ed8fb38, 0 2px 4px #bfe4fa0e;
+        box-shadow: 0 10px 28px 0 #fb9c9c36, 0 2px 4px #ffa5a50e;
     }
     h2 {
         text-align: center;
-        color: #14a14f;
+        color: #e02727;
         font-size: 29px;
         font-weight: 800;
         margin-bottom: 28px;
         letter-spacing: 0.06em;
-        text-shadow: 0 2px 9px #a3e9b428;
+        text-shadow: 0 2px 9px #fabebcb2;
     }
     h3 {
-        color: #2b65a8;
+        color: #af2334;
         font-size: 19px;
         margin-bottom: 13px;
         font-weight: 700;
@@ -43,18 +45,18 @@
     .section {
         margin-bottom: 28px;
         padding: 17px 20px 13px 23px;
-        border: 1.5px solid #d4e6fa;
+        border: 1.3px solid #fae0e0;
         border-radius: 15px;
-        background: #f6fbff;
-        box-shadow: 0 1.5px 8px #cdecfc15;
+        background: #fff6f6;
+        box-shadow: 0 1.5px 8px #fababa18;
     }
     .history {
         margin-bottom: 15px;
         padding: 15px 20px 11px 23px;
-        border: 1.2px dashed #aac0e5;
+        border: 1.2px dashed #f6b4b4;
         border-radius: 14px;
-        background: #f7fbff;
-        box-shadow: 0 1.5px 8px #cdecfc0f;
+        background: #fcf0f0;
+        box-shadow: 0 1.5px 8px #fad0d00f;
     }
     .row {
         margin-bottom: 13px;
@@ -66,14 +68,14 @@
         display: inline-block;
         font-weight: 600;
         font-size: 15px;
-        color: #245088;
+        color: #ab2339;
         min-width: 120px;
         max-width: 190px;
         width: 37%;
     }
     h\:outputText {
         font-size: 15px;
-        color: #294366;
+        color: #7b252a;
         letter-spacing: 0.01em;
         font-weight: 500;
     }
@@ -108,10 +110,10 @@
 </style>
 </head>
 <body>
-<jsp:include page="Navbar.jsp"/>
+<jsp:include page="/navbar/NavAdmin.jsp"/>
 
 <div class="container">
-    <h2>This claim is approved</h2>
+    <h2>This claim is denied</h2>
     <h:form>
         <h:messages globalOnly="true" />
         <!-- Claim Details -->
@@ -121,12 +123,10 @@
                 <span class="label">Claim ID:</span>
                 <h:outputText value="#{processClaimController.claim.claimId}" />
             </div>
-            
              <div class="row">
                 <span class="label">Recipient ID:</span>
             <h:outputText value="#{processClaimController.claim.recipient.hId}" />
             </div>
-            
             <div class="row">
                 <span class="label">Policy ID:</span>
                 <h:outputText value="#{processClaimController.claim.subscribe.subscribeId}" />
@@ -169,10 +169,6 @@
                 <span class="label">Available Coverage:</span>
                 <h:outputText value="#{processClaimController.remainingCoverageAmount}" />
             </div>
-            <div class="row">
-                <span class="label">Payment Status:</span>
-                <h:outputText value="#{processClaimController.paymentHistory.paymentStatus}" />
-            </div>
         </div>
         <!-- History -->
         <div class="history">
@@ -190,5 +186,7 @@
     </h:form>
 </div>
 </body>
+    <!-- 📘 Footer -->
+    <jsp:include page="/footer/Footer.jsp" />
 </f:view>
 </html>

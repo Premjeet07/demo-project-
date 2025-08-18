@@ -14,18 +14,15 @@
 
         <!-- PROVIDER NAV LINKS -->
         <ul class="nav-links">
-            <li><a href="providerDashboard.jsf" class="nav-link">Dashboard</a></li>
-            <li><a href="appointments.jsf" class="nav-link">Provider</a></li>
-            <li><a href="patients.jsf" class="nav-link">Pharmacy</a></li>
-            <li><a href="services.jsf" class="nav-link">Recepient</a></li>
-            <li><a href="reports.jsf" class="nav-link">Insurance</a></li>
-            <li><a href="reports.jsf" class="nav-link">Claims</a></li>
-            <li><a href="reports.jsf" class="nav-link">Payments</a></li>
+            <li><a href="Pharmacy.jsf" class="nav-link">Home</a></li>
+            <li><a href="#" class="nav-link">Medicines</a></li>
+            <li><a href="#" class="nav-link">Equipments</a></li>
+            <li><a href="#" class="nav-link">Search & View</a></li>
+            
         </ul>
 
         <div class="profile-section">
 		    <h:graphicImage library="media" name="images/defaultProfile.jpg" alt="Profile Avatar" styleClass="profile-avatar" />
 		    <a href="Profile.jsf" class="view-profile-btn">View Profile</a>
     	</div>
-    </div>
 </nav>

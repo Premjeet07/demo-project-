@@ -8,6 +8,8 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
 	rel="stylesheet">
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+	
 <style>
 body {
 	background: linear-gradient(110deg, #e6f1fd 55%, #d8f3fa 100%);
@@ -209,7 +211,7 @@ h\:messages {
     </script>
 </head>
 <body>
-<jsp:include page="Navbar.jsp"/>
+<jsp:include page="/navbar/NavAdmin.jsp"/>
 
 	<div class="container">
 		<h2>Process Claim</h2>
@@ -374,4 +376,6 @@ h\:messages {
 	</div>
 </body>
 	</html>
+	    <!-- 📘 Footer -->
+    <jsp:include page="/footer/Footer.jsp" />
 </f:view>

@@ -289,6 +289,33 @@ public class ClaimController implements Serializable {
 
         return "searchClaims?faces-redirect=true"; // force full refresh
     }
+    private ClaimController claimController;
+
+    public ClaimController getClaimController() {
+        return claimController;
+    }
+
+    public void setClaimController(ClaimController claimController) {
+        this.claimController = claimController;
+    }
+    public String backToDashboard() {
+        if (claimController != null) {
+            claimController.resetButton();
+        }
+        this.searchType = null;
+        this.searchValue = null;
+        this.fromDate = null;
+        this.toDate = null;
+        this.fromDateStr = null;
+        this.toDateStr = null;
+        this.claimsList = null;
+        
+
+//        userEditState.clear(); // back to search: clear state!
+//        selectedClaimsList = null;
+       // currentPage = 1;
+        return "Admin?faces-redirect=true";
+    }
 
     // Getters and Setters
     public ClaimDAO getClaimDao() {

@@ -1,0 +1,125 @@
+body {
+    background-color: #f3f4f6;
+    padding-top: 5rem;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+.container {
+    max-width: 80rem;
+    margin: 0 10%;
+    padding: 1.5rem;
+}
+
+.heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1e40af;
+}
+
+.subheading {
+    color: #4b5563;
+    margin-top: 0.25rem;
+}
+
+.metrics-wrapper {
+	margin-left: 10% ;
+    margin-right: 10%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+
+}
+
+.metric-card {
+    background-color: #ffffff;
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.metric-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.metric-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+.purple { color: #9333ea; }
+.green { color: #16a34a; }
+.teal  { color: #0d9488; }
+
+.metric-value {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin: 0.5rem 0;
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.quote-box {
+    background-color: #eef2ff;
+    border-left: 4px solid #818cf8;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-bottom: 2.5rem;
+    font-style: italic;
+    color: #3730a3;
+}
+
+.actions-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+}
+
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.action-button {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 500;
+    color: white;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: none;
+    cursor: pointer;
+}
+
+.blue    { background-color: #2563eb; }
+.blue:hover { background-color: #1d4ed8; }
+
+.purple-btn    { background-color: #9333ea; }
+.purple-btn:hover { background-color: #7e22ce; }
+
+.green-btn    { background-color: #16a34a; }
+.green-btn:hover { background-color: #15803d; }
+
+.pink-btn    { background-color: #ec4899; }
+.pink-btn:hover { background-color: #db2777; }
+
+.indigo-btn    { background-color: #4f46e5; }
+.indigo-btn:hover { background-color: #4338ca; }
+
+.footer-space {
+    margin-bottom: 5rem;
+}

@@ -8,6 +8,8 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
 	rel="stylesheet">
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+	
 <link rel="stylesheet"
 	href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -125,29 +127,41 @@ to {
 }
 
 .search-btn-row {
-	margin-top: 12px;
-	display: flex;
-	justify-content: center;
-	gap: 10px;
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 10px;
 }
 
 .big-search-btn {
-	background-color: #2563eb;
-	color: #fff;
-	font-size: 18px;
-	font-weight: 700;
-	padding: 14px 60px;
-	border: none;
-	border-radius: 12px;
-	box-shadow: 0 6px 18px rgba(59, 130, 246, 0.3);
-	cursor: pointer;
-	transition: all 0.3s ease;
+    background-color: #2563eb;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 48px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(59, 130, 246, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .big-search-btn:hover {
-	background-color: #1d4ed8;
-	transform: translateY(-2px);
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
 }
+
+.big-search-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
 
 .search-extra-panel {
 	margin-top: 20px;
@@ -307,7 +321,7 @@ table.claim-table {
 </style>
 </head>
 <body>
-	<jsp:include page="Navbar.jsp" />
+	<jsp:include page="/navbar/NavAdmin.jsp"/>
 	<div class="main-title">Search Claims</div>
 	<h:form styleClass="glass-card" prependId="true">
 		<h:messages globalOnly="true" style="color:red" />
@@ -389,7 +403,14 @@ table.claim-table {
 				action="#{claimController.searchClaims}" styleClass="big-search-btn" />
 			<h:commandButton value="RESET"
 				action="#{claimController.resetButton}" styleClass="big-search-btn" />
+				
 		</div>
+		<!-- Back Button -->
+			<div class="search-btn-row">
+				<h:commandButton value="BACK TO DASHBOARD"
+					action="#{claimController.backToDashboard}" 
+					styleClass="big-search-btn" />
+			</div> 
 	</h:form>
 	<h:form id="claimForm">
 		<h:panelGroup rendered="#{not empty claimController.claimsList}">
@@ -667,4 +688,6 @@ table.claim-table {
  
 </body>
 	</html>
+	    <!-- 📘 Footer -->
+    <jsp:include page="/footer/Footer.jsp" />
 </f:view>

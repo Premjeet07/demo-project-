@@ -1,0 +1,99 @@
+/* Reset and base styles */
+body {
+    margin-top: 50px;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+/* Container for centering */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Glassmorphism card */
+.profile-card {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 800px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #333;
+}
+
+/* Heading */
+.heading-primary {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #0a3d62;
+}
+
+/* Details box layout */
+.details-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0rem 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Individual detail item */
+.details-box p {
+    background: rgba(255, 255, 255, 0.25);
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: #2f3542;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Icon styling */
+.details-box i {
+    color: #1e90ff;
+    font-size: 1.2rem;
+}
+
+/* Button group layout */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Button styles */
+.button-red, .button-yellow {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    color: white;
+}
+
+.button-red {
+    background-color: #e74c3c;
+}
+
+.button-red:hover {
+    background-color: #c0392b;
+}
+
+.button-yellow {
+    background-color: #f1c40f;
+    color: #333;
+}
+
+.button-yellow:hover {
+    background-color: #d4ac0d;
+}

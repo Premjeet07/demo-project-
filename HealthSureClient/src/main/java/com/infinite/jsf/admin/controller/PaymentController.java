@@ -410,14 +410,14 @@ public class PaymentController {
         this.claimController = claimController;
     }
 
-    public String backToSearchClaims() {
+    public String backToDashboard() {
         if (claimController != null) {
             claimController.resetButton();
         }
         userEditState.clear(); // back to search: clear state!
         selectedClaimsList = null;
         currentPage = 1;
-        return "searchClaims?faces-redirect=true";
+        return "Admin?faces-redirect=true";
     }
 
     // --- validations for update ---
