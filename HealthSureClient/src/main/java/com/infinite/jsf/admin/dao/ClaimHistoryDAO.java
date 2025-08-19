@@ -1,6 +1,6 @@
 package com.infinite.jsf.admin.dao;
 
-import com.infinite.jsf.admin.model.ClaimHistory;
+import com.infinite.jsf.provider.model.ClaimHistory;
 
 public interface ClaimHistoryDAO {
     

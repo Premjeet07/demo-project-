@@ -10,10 +10,11 @@ import javax.faces.event.ValueChangeEvent;
 
 import com.infinite.jsf.admin.dao.ProcessClaimDAO;
 import com.infinite.jsf.admin.daoImpl.ClaimHistoryDAOImpl;
-import com.infinite.jsf.admin.model.Claim;
-import com.infinite.jsf.admin.model.ClaimHistory;
-import com.infinite.jsf.admin.model.ClaimStatus;
+
 import com.infinite.jsf.admin.model.PaymentHistory;
+import com.infinite.jsf.provider.model.Claim;
+import com.infinite.jsf.provider.model.ClaimHistory;
+import com.infinite.jsf.provider.model.ClaimStatus;
 
 public class ProcessClaimController {
 
@@ -205,7 +206,7 @@ public class ProcessClaimController {
 		}
 		if (!ClaimStatus.PENDING.equals(latestClaim.getClaimStatus())) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
-					"This claim is already " + latestClaim.getClaimStatus().name().toLowerCase() + ".", null));
+					"Claim Already " + latestClaim.getClaimStatus().name().toLowerCase() + "!", null));
 			claimProcessed = true;
 			return null;
 		}
@@ -265,7 +266,7 @@ public class ProcessClaimController {
 
 		// ✅ Show info message (top-of-page if <h:messages/> is placed before details)
 		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
-				"Claim has been " + status.toLowerCase() + " successfully.", null));
+				"Claim " + status.toLowerCase() + " Successfully.", null));
 		flag = true;
 		System.out.println(" submit "+flag);
 		return "claimUpdated.jsf"; // forward/navigation as needed

@@ -1,8 +1,9 @@
 package com.infinite.jsf.admin.dao;
 
-import com.infinite.jsf.admin.model.Claim;
-import com.infinite.jsf.admin.model.ClaimHistory;
+
 import com.infinite.jsf.admin.model.PaymentHistory;
+import com.infinite.jsf.provider.model.Claim;
+import com.infinite.jsf.provider.model.ClaimHistory;
 
 public interface ProcessClaimDAO {
     

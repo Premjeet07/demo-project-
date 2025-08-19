@@ -4,12 +4,12 @@
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.infinite.jsf.admin.model.Account" table="Accounts">
+    <class name="com.infinite.jsf.provider.model.Account" table="Accounts">
         <id name="accountId" column="account_id" type="int">
             <generator class="increment"/>
         </id>
 
-        <many-to-one name="provider" class="com.infinite.jsf.admin.model.Provider" column="provider_id" not-null="false"/>
+        <many-to-one name="provider" class="com.infinite.jsf.provider.model.Provider" column="provider_id" not-null="false"/>
 
         <property name="bankName" column="bank_name" type="string"/>
         <property name="ifscCode" column="ifsc_code" type="string"/>

@@ -1,4 +1,4 @@
-package com.infinite.jsf.admin.model;
+package com.infinite.jsf.provider.model;
 
 public enum ClaimStatus {
 

@@ -1,4 +1,5 @@
-package com.infinite.jsf.admin.model;
+package com.infinite.jsf.provider.model;
+import com.infinite.jsf.provider.model.Provider;
 
 public class Account {
     private int accountId;

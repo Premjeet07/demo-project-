@@ -9,9 +9,10 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.Query;
 
 import com.infinite.jsf.admin.dao.PaymentProcessingDAO;
-import com.infinite.jsf.admin.model.Claim;
+
 import com.infinite.jsf.admin.model.PaymentHistory;
 import com.infinite.jsf.admin.model.PaymentStatus;
+import com.infinite.jsf.provider.model.Claim;
 
 public class PaymentProcessingDAOImpl implements PaymentProcessingDAO {
 
@@ -30,7 +31,7 @@ public class PaymentProcessingDAOImpl implements PaymentProcessingDAO {
                     "WHERE c.claimStatus = :approved AND p.paymentStatus = :pending";
 
             Query query = session.createQuery(hql);
-            query.setParameter("approved", com.infinite.jsf.admin.model.ClaimStatus.APPROVED);
+            query.setParameter("approved", com.infinite.jsf.provider.model.ClaimStatus.APPROVED);
             query.setParameter("pending", com.infinite.jsf.admin.model.PaymentStatus.pending);
             
             return query.list();
@@ -50,7 +51,7 @@ public class PaymentProcessingDAOImpl implements PaymentProcessingDAO {
                          "AND p.paymentStatus = :pending " +
                          "AND c.provider.providerId = :providerId";
             Query query = session.createQuery(hql);
-            query.setParameter("approved", com.infinite.jsf.admin.model.ClaimStatus.APPROVED);
+            query.setParameter("approved", com.infinite.jsf.provider.model.ClaimStatus.APPROVED);
             query.setParameter("pending", com.infinite.jsf.admin.model.PaymentStatus.pending);
             query.setParameter("providerId", providerId);
             return query.list();

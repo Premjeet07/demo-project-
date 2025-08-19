@@ -1,7 +1,11 @@
-package com.infinite.jsf.admin.model;
+package com.infinite.jsf.provider.model;
 
 import java.sql.Timestamp;
 import java.util.Set;
+
+import com.infinite.jsf.admin.model.PaymentHistory;
+import com.infinite.jsf.insurance.model.Subscribe;
+import com.infinite.jsf.recepient.model.Recipient;
 
 public class Claim {
 	private String claimId;

@@ -30,7 +30,7 @@
         text-align: center;
         color: #14a14f;
         font-size: 29px;
-        font-weight: 800;
+        font-style:Bold;
         margin-bottom: 28px;
         letter-spacing: 0.06em;
         text-shadow: 0 2px 9px #a3e9b428;
@@ -113,7 +113,7 @@
 <jsp:include page="/navbar/NavAdmin.jsp"/>
 
 <div class="container">
-    <h2>This claim is approved</h2>
+    <h2>Claim Approved!</h2>
     <h:form>
         <h:messages globalOnly="true" />
         <!-- Claim Details -->

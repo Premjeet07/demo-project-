@@ -9,7 +9,8 @@ import org.hibernate.Query;
 import org.hibernate.cfg.Configuration;
 
 import com.infinite.jsf.admin.dao.ClaimHistoryDAO;
-import com.infinite.jsf.admin.model.ClaimHistory;
+import com.infinite.jsf.provider.model.ClaimHistory;
+
 
 public class ClaimHistoryDAOImpl implements ClaimHistoryDAO {
 

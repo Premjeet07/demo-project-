@@ -1,4 +1,4 @@
-  package com.infinite.jsf.admin.model;
+  package com.infinite.jsf.provider.model;
 
 import java.io.Serializable;
 import java.util.Date;

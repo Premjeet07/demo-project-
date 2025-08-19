@@ -1,6 +1,10 @@
-package com.infinite.jsf.admin.model;
+package com.infinite.jsf.recepient.model;
 
 import java.util.Set;
+
+import com.infinite.jsf.insurance.model.Subscribe;
+import com.infinite.jsf.provider.model.Claim;
+import com.infinite.jsf.provider.model.MedicalProcedure;
 
 public class Recipient {
     private String hId;

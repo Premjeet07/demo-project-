@@ -5,7 +5,7 @@
 
 
 <hibernate-mapping>
-  <class name="com.infinite.jsf.admin.model.Recipient" table="recipient">
+  <class name="com.infinite.jsf.recepient.model.Recipient" table="recipient">
     <id name="hId" column="h_id" type ="string" />
     <property name="firstName" column="first_name"/>
     <property name="lastName" column="last_name"/>
@@ -21,17 +21,17 @@
 
     <set name="subscriptions" inverse="true" cascade="all">
       <key column="h_id"/>
-      <one-to-many class="com.infinite.jsf.admin.model.Subscribe"/>
+      <one-to-many class="com.infinite.jsf.insurance.model.Subscribe"/>
     </set>
 
     <set name="claims" inverse="true" cascade="all">
       <key column="h_id"/>
-      <one-to-many class="com.infinite.jsf.admin.model.Claim"/>
+      <one-to-many class="com.infinite.jsf.provider.model.Claim"/>
     </set>
 
     <set name="procedures" inverse="true" cascade="all">
       <key column="h_id"/>
-      <one-to-many class="com.infinite.jsf.admin.model.MedicalProcedure"/>
+      <one-to-many class="com.infinite.jsf.provider.model.MedicalProcedure"/>
     </set>
 
    

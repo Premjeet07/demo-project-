@@ -1,7 +1,10 @@
-package com.infinite.jsf.admin.model;
+package com.infinite.jsf.insurance.model;
 
 import java.util.Date;
 import java.util.Set;
+
+import com.infinite.jsf.provider.model.Claim;
+import com.infinite.jsf.recepient.model.Recipient;
 
 public class Subscribe {
     private String subscribeId;

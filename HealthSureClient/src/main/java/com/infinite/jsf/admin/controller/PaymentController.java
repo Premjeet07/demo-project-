@@ -7,9 +7,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import com.infinite.jsf.admin.dao.PaymentProcessingDAO;
-import com.infinite.jsf.admin.model.Claim;
 import com.infinite.jsf.admin.model.PaymentHistory;
 import com.infinite.jsf.admin.model.PaymentStatus;
+import com.infinite.jsf.provider.model.Claim;
 
 /**
  * PaymentController with user edit state overlay.
@@ -274,6 +274,20 @@ public class PaymentController {
         if (providerId == null || providerId.trim().isEmpty()) {
             FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage(FacesMessage.SEVERITY_ERROR, "Please enter a provider ID.", null));
+            userEditState.clear();        // ⭐️ On search, CLEAR user state!
+            selectedClaimsList = null;
+            currentPage = 1;
+            return null;
+            
+        }
+        providerId = providerId.trim();
+
+        if (!providerId.matches("^P\\d+$")) {
+        	FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+                    "Provider ID must start with 'P' followed by digits (e.g., P001).", null));
+        	 userEditState.clear();        // ⭐️ On search, CLEAR user state!
+             selectedClaimsList = null;
+             currentPage = 1;
             return null;
         }
         userEditState.clear();        // ⭐️ On search, CLEAR user state!
@@ -288,6 +302,19 @@ public class PaymentController {
                     "No approved claims available for payment for the given provider.", null));
         }
         return null;
+    }
+    public String backToFullList() {
+        // Reset provider filter
+        this.providerId = null;
+        // Clear any prior search/user state
+        userEditState.clear();
+        selectedClaimsList = null;
+        currentPage = 1;
+
+        // Force reload the list (same as initial load)
+        getSelectedClaimsList();
+
+        return null; // stay on same page
     }
 
     // --- PROCESS PAYMENTS ---

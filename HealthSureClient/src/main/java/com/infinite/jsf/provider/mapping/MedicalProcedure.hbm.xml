@@ -3,11 +3,11 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-  <class name="com.infinite.jsf.admin.model.MedicalProcedure" table="medical_procedure">
+  <class name="com.infinite.jsf.provider.model.MedicalProcedure" table="medical_procedure">
     <id name="procedureId" column="procedure_id"/>
     <property name="appointmentId" column="appointment_id"/>
-    <many-to-one name="recipient" class="com.infinite.jsf.admin.model.Recipient" column="h_id"/>
-    <many-to-one name="provider" class="com.infinite.jsf.admin.model.Provider" column="provider_id"/>
+    <many-to-one name="recipient" class="com.infinite.jsf.recepient.model.Recipient" column="h_id"/>
+    <many-to-one name="provider" class="com.infinite.jsf.provider.model.Provider" column="provider_id"/>
     <property name="doctorId" column="doctor_id"/>
     <property name="procedureDate" column="procedure_date"/>
     <property name="diagnosis"/>
@@ -18,7 +18,7 @@
 
     <set name="claims" inverse="true" cascade="all">
       <key column="procedure_id"/>
-      <one-to-many class="com.infinite.jsf.admin.model.Claim"/>
+      <one-to-many class="com.infinite.jsf.provider.model.Claim"/>
     </set>
   </class>
 </hibernate-mapping>

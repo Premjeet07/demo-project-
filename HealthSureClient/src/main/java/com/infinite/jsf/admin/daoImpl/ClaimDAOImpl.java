@@ -11,8 +11,8 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import com.infinite.jsf.admin.dao.ClaimDAO;
-import com.infinite.jsf.admin.model.Claim;
-import com.infinite.jsf.admin.model.ClaimStatus;
+import com.infinite.jsf.provider.model.Claim;
+import com.infinite.jsf.provider.model.ClaimStatus;
 
 public class ClaimDAOImpl implements ClaimDAO {
 

@@ -1,9 +1,11 @@
 package com.infinite.jsf.admin.dao;
 
-import com.infinite.jsf.admin.model.Claim;
+
 
 import java.util.Date;
 import java.util.List;
+
+import com.infinite.jsf.provider.model.Claim;
 
 public interface ClaimDAO {
 

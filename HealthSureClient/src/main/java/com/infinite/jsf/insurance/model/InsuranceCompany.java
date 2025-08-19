@@ -1,4 +1,4 @@
-package com.infinite.jsf.admin.model;
+package com.infinite.jsf.insurance.model;
 
 public class InsuranceCompany {
     private String companyId;

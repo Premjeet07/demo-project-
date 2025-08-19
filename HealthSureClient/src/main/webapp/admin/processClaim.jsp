@@ -31,7 +31,7 @@ h2 {
 	text-align: center;
 	color: #2350a0;
 	font-size: 29px;
-	font-weight: 800;
+	font-style: Bold;
 	margin-bottom: 28px;
 	letter-spacing: 0.062em;
 }

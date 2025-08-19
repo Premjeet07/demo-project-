@@ -4,7 +4,7 @@
     "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.infinite.jsf.admin.model.InsurancePlan" table="Insurance_plan">
+    <class name="com.infinite.jsf.insurance.model.InsurancePlan" table="Insurance_plan">
         <id name="planId" column="plan_id">
             <generator class="assigned"/>
         </id>

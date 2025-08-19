@@ -6,19 +6,22 @@
         <id name="paymentId" column="payment_id" type="int">
             <generator class="increment"/>
         </id>
-        
+
         <property name="hId" column="h_id" type="string"/>
         <property name="providerId" column="provider_id" type="string"/>
         <property name="amount" column="amount" type="double"/>
         <property name="paymentMethod" column="payment_method" type="string"/>
-<property name="paymentStatus">
-			<column name="payment_status" not-null="true" />
-			<type name="org.hibernate.type.EnumType">
-				<param name="enumClass">com.infinite.jsf.admin.model.PaymentStatus</param>
-				<param name="type">12</param>
-			</type>
-		</property>        <property name="paymentDate" column="payment_date" type="timestamp"/>
+
+        <property name="paymentStatus">
+            <column name="payment_status" not-null="true"/>
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.infinite.jsf.admin.model.PaymentStatus</param>
+                <param name="type">12</param>
+            </type>
+        </property>
+
+        <property name="paymentDate" column="payment_date" type="timestamp"/>
         <property name="remarks" column="remarks" type="string"/>
-        <property name="claimId" column="claim_id" type="string"/>
-    </class>
+
+<property name="claimId" column="claim_id" type="string"/>    </class>
 </hibernate-mapping>

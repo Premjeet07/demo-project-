@@ -213,8 +213,8 @@ table.payment-table {
 	border: none;
 	border-radius: 12px;
 	padding: 13px 60px 13px 53px;
-	font-size: 20px;
-	font-weight: 800;
+	font-size: 15px;
+	font-weight: 500;
 	letter-spacing: 0.01em;
 	box-shadow: 0 7px 22px #accffd40;
 	cursor: pointer;
@@ -265,6 +265,9 @@ table.payment-table {
 					styleClass="search-input" />
 				<h:commandButton value="Search" styleClass="search-btn"
 					action="#{paymentController.searchByProvider}" />
+					<h:commandButton value="Pending Payment" 
+                 action="#{paymentController.backToFullList}" 
+                 styleClass="search-btn"/>
 			</div>
 
 			<div class="messages-section">
@@ -402,10 +405,6 @@ table.payment-table {
 						</h:column>
 					</h:dataTable>
 				</div>
-
-				<!-- Pagination -->
-
-
 				<div class="pagination-controls">
 
 
@@ -426,23 +425,31 @@ table.payment-table {
 							disabled="#{paymentController.nextDisabled}"
 							styleClass="pagination-btn" />
 					</div>
-
-				</div>
-
-				<!-- Process Button -->
+					</div>
+					<!-- Process Button -->
 				<div class="process-btn-section" style="margin-top: 24px;">
 					<h:commandButton value="Process All Selected Payments"
 						action="#{paymentController.processSelectedPayments}"
 						styleClass="process-btn" />
 				</div>
-			</h:panelGroup>
-
-			<!-- Back Button -->
-			<div class="search-btn-row">
+				<!-- Back Button -->
+			<div class="process-btn-section">
 				<h:commandButton value="BACK TO DASHBOARD"
 					action="#{paymentController.backToDashboard}"
-					styleClass="btn-cancel" />
+					styleClass="process-btn" />
 			</div>
+
+				<!-- Pagination -->
+
+
+				
+
+				
+
+			
+			</h:panelGroup>
+
+			
 			
 		</h:form>
 	</div>

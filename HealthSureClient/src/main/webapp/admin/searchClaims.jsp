@@ -8,8 +8,9 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
 	rel="stylesheet">
-	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-	
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <link rel="stylesheet"
 	href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css" />
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -127,41 +128,40 @@ to {
 }
 
 .search-btn-row {
-    margin-top: 16px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 12px;
-    border-radius: 10px;
+	margin-top: 16px;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 12px;
+	padding: 12px;
+	border-radius: 10px;
 }
 
 .big-search-btn {
-    background-color: #2563eb;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    padding: 12px 48px;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(59, 130, 246, 0.3);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+	background-color: #2563eb;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 600;
+	padding: 12px 48px;
+	border: none;
+	border-radius: 10px;
+	box-shadow: 0 6px 18px rgba(59, 130, 246, 0.3);
+	cursor: pointer;
+	transition: all 0.3s ease;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
 }
 
 .big-search-btn:hover {
-    background-color: #1d4ed8;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+	background-color: #1d4ed8;
+	transform: translateY(-2px);
+	box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
 }
 
 .big-search-btn:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+	transform: translateY(0);
+	box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
 }
-
 
 .search-extra-panel {
 	margin-top: 20px;
@@ -321,9 +321,9 @@ table.claim-table {
 </style>
 </head>
 <body>
-	<jsp:include page="/navbar/NavAdmin.jsp"/>
+	<jsp:include page="/navbar/NavAdmin.jsp" />
 	<div class="main-title">Search Claims</div>
-	<h:form styleClass="glass-card" prependId="true">
+	<h:form styleClass="glass-card" prependId="true" id="red">
 		<h:messages globalOnly="true" style="color:red" />
 
 		<div class="search-form-container">
@@ -341,6 +341,8 @@ table.claim-table {
 					<f:selectItem itemLabel="Claim Status" itemValue="status" />
 					<f:selectItem itemLabel="Date Range" itemValue="dateRange" />
 				</h:selectOneMenu>
+				<h:message for="searchType" showSummary="true" showDetail="false"
+					style="color:red; font-size:15px; margin-top:4px;" />
 			</div>
 		</div>
 
@@ -356,6 +358,8 @@ table.claim-table {
 					<f:selectItem itemLabel="APPROVED" itemValue="APPROVED" />
 					<f:selectItem itemLabel="DENIED" itemValue="DENIED" />
 				</h:selectOneMenu>
+				<h:message for="statusField" showSummary="true" showDetail="false"
+					style="color:red; font-size:15px; margin-top:4px;" />
 			</div>
 		</h:panelGroup>
 
@@ -365,6 +369,9 @@ table.claim-table {
 				<h:outputLabel for="subscribeIdField" value="Policy ID:" />
 				<h:inputText id="subscribeIdField" styleClass="long-input"
 					value="#{claimController.searchValue}" />
+				<h:message for="subscribeIdField" showSummary="true"
+					showDetail="false"
+					style="color:red; font-size:15px; margin-top:4px;" />
 			</div>
 		</h:panelGrid>
 
@@ -374,6 +381,9 @@ table.claim-table {
 				<h:outputLabel for="providerIdField" value="Provider ID:" />
 				<h:inputText id="providerIdField" styleClass="long-input"
 					value="#{claimController.searchValue}" />
+				<h:message for="providerIdField" showSummary="true"
+					showDetail="false"
+					style="color:red; font-size:15px; margin-top:4px;" />
 			</div>
 		</h:panelGrid>
 
@@ -383,6 +393,9 @@ table.claim-table {
 				<h:outputLabel for="recipientIdField" value="Recipient HID:" />
 				<h:inputText id="recipientIdField" styleClass="long-input"
 					value="#{claimController.searchValue}" />
+				<h:message for="recipientIdField" showSummary="true"
+					showDetail="false"
+					style="color:red; font-size:15px; margin-top:4px;" />
 			</div>
 		</h:panelGrid>
 
@@ -392,9 +405,14 @@ table.claim-table {
 				<h:outputLabel for="fromDate" value="From Date: [ YYYY-MM-DD ]" />
 				<h:inputText id="fromDate" styleClass="long-input"
 					value="#{claimController.fromDateStr}" />
+				<h:message for="fromDate" showSummary="true" showDetail="false"
+					style="color:red; font-size:15px; margin-top:4px;" />
+
 				<h:outputLabel for="toDate" value="To Date: [ YYYY-MM-DD ]" />
 				<h:inputText id="toDate" styleClass="long-input"
 					value="#{claimController.toDateStr}" />
+				<h:message for="toDate" showSummary="true" showDetail="false"
+					style="color:red; font-size:15px; margin-top:4px;" />
 			</div>
 		</h:panelGrid>
 
@@ -403,14 +421,13 @@ table.claim-table {
 				action="#{claimController.searchClaims}" styleClass="big-search-btn" />
 			<h:commandButton value="RESET"
 				action="#{claimController.resetButton}" styleClass="big-search-btn" />
-				
+
 		</div>
 		<!-- Back Button -->
-			<div class="search-btn-row">
-				<h:commandButton value="BACK TO DASHBOARD"
-					action="#{claimController.backToDashboard}" 
-					styleClass="big-search-btn" />
-			</div> 
+		<div class="search-btn-row">
+			<h:commandButton value="BACK TO DASHBOARD" action="#{claimController.backToDashboard}"
+				styleClass="big-search-btn" />
+		</div>
 	</h:form>
 	<h:form id="claimForm">
 		<h:panelGroup rendered="#{not empty claimController.claimsList}">
@@ -440,8 +457,9 @@ table.claim-table {
 				</div>
 
 				<div class="table-wrap">
-					<h:dataTable id="claimsTable" value="#{claimController.paginatedClaimsList}"
-						var="claim" styleClass="claim-table">
+					<h:dataTable id="claimsTable"
+						value="#{claimController.paginatedClaimsList}" var="claim"
+						styleClass="claim-table">
 						<h:column>
 							<f:facet name="header">
 								<h:panelGroup layout="block"
@@ -658,36 +676,36 @@ table.claim-table {
 
 	</h:form>
 	<script>
-	// Function to scroll to the table
-	function scrollToTable() {
-	    // Corrected selector to match JSF's generated ID for the table
-	    // Assuming your form ID is 'insuranceForm' and table ID is 'insuranceTable'
-	    const table = document.getElementById('claimForm:claimsTable');
-	    if (table) {
-	        const offset = 80; // Adjust for navbar height so that table doesn't go underneath of it
-			//adds the current scroll position to get the true position relative to the document.
-	        const tablePosition = table.getBoundingClientRect().top + window.pageYOffset - offset;
-			
-			//Scrolls the page to bring the table into view.
-	        window.scrollTo({
-	            top: tablePosition,
-	            behavior: 'smooth'
-	        });
-	    }
-	}
-	// Call scroll to table on page load (after DOM is ready)
-	window.addEventListener('DOMContentLoaded', function() {
-	    // Call scroll to table. It will scroll if the table is rendered.
-	    const table = document.getElementById('claimForm:claimsTable');
-	    if (table) {
-	        scrollToTable();
-	    }
-	});
-	
-</script>
- 
+		// Function to scroll to the table
+		function scrollToTable() {
+			// Corrected selector to match JSF's generated ID for the table
+			// Assuming your form ID is 'insuranceForm' and table ID is 'insuranceTable'
+			const table = document.getElementById('claimForm:claimsTable');
+			if (table) {
+				const offset = 80; // Adjust for navbar height so that table doesn't go underneath of it
+				//adds the current scroll position to get the true position relative to the document.
+				const tablePosition = table.getBoundingClientRect().top
+						+ window.pageYOffset - offset;
+
+				//Scrolls the page to bring the table into view.
+				window.scrollTo({
+					top : tablePosition,
+					behavior : 'smooth'
+				});
+			}
+		}
+		// Call scroll to table on page load (after DOM is ready)
+		window.addEventListener('DOMContentLoaded', function() {
+			// Call scroll to table. It will scroll if the table is rendered.
+			const table = document.getElementById('claimForm:claimsTable');
+			if (table) {
+				scrollToTable();
+			}
+		});
+	</script>
+
 </body>
 	</html>
-	    <!-- 📘 Footer -->
-    <jsp:include page="/footer/Footer.jsp" />
+	<!-- 📘 Footer -->
+	<jsp:include page="/footer/Footer.jsp" />
 </f:view>

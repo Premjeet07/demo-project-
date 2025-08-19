@@ -14,14 +14,14 @@
 <property name="hibernate.format_sql">true</property>
 <property name="hibernate.hbm2ddl.auto">update</property>
 
-<mapping resource="com/infinite/jsf/admin/mapping/Claim.hbm.xml"/>
-<mapping resource="com/infinite/jsf/admin/mapping/Subscribe.hbm.xml"/>
-<mapping resource="com/infinite/jsf/admin/mapping/Recipient.hbm.xml"/>
-<mapping resource="com/infinite/jsf/admin/mapping/Provider.hbm.xml"/>
-<mapping resource="com/infinite/jsf/admin/mapping/MedicalProcedure.hbm.xml"/>
-<mapping resource="com/infinite/jsf/admin/mapping/ClaimHistory.hbm.xml"/>
-<mapping resource="com/infinite/jsf/admin/mapping/InsuranceCoverageOption.hbm.xml"/>
+<mapping resource="com/infinite/jsf/provider/mapping/Claim.hbm.xml"/>
+<mapping resource="com/infinite/jsf/insurance/mapping/Subscribe.hbm.xml"/>
+<mapping resource="com/infinite/jsf/recepient/mapping/Recipient.hbm.xml"/>
+<mapping resource="com/infinite/jsf/provider/mapping/Provider.hbm.xml"/>
+<mapping resource="com/infinite/jsf/provider/mapping/MedicalProcedure.hbm.xml"/>
+<mapping resource="com/infinite/jsf/provider/mapping/ClaimHistory.hbm.xml"/>
+<mapping resource="com/infinite/jsf/insurance/mapping/InsuranceCoverageOption.hbm.xml"/>
 <mapping resource="com/infinite/jsf/admin/mapping/PaymentHistory.hbm.xml" />
-<mapping resource="com/infinite/jsf/admin/mapping/Account.hbm.xml" />
+<mapping resource="com/infinite/jsf/provider/mapping/Account.hbm.xml" />
 </session-factory>
 </hibernate-configuration>

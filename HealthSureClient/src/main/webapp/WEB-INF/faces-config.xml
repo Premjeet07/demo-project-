@@ -15,19 +15,19 @@
     <!-- Model Beans -->
     <managed-bean>
         <managed-bean-name>claim</managed-bean-name>
-        <managed-bean-class>com.infinite.jsf.admin.model.Claim</managed-bean-class>
+        <managed-bean-class>com.infinite.jsf.provider.model.Claim</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
 
     <managed-bean>
         <managed-bean-name>provider</managed-bean-name>
-        <managed-bean-class>com.infinite.jsf.admin.model.Provider</managed-bean-class>
+        <managed-bean-class>com.infinite.jsf.provider.model.Provider</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
 
     <managed-bean>
         <managed-bean-name>recipient</managed-bean-name>
-        <managed-bean-class>com.infinite.jsf.admin.model.Recipient</managed-bean-class>
+        <managed-bean-class>com.infinite.jsf.recepient.model.Recipient</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
    <managed-bean>
@@ -37,7 +37,7 @@
    </managed-bean>
     <managed-bean>
         <managed-bean-name>subscribe</managed-bean-name>
-        <managed-bean-class>com.infinite.jsf.admin.model.Subscribe</managed-bean-class>
+        <managed-bean-class>com.infinite.jsf.insurance.model.Subscribe</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     
@@ -61,25 +61,25 @@
 
         <managed-property>
             <property-name>claim</property-name>
-            <property-class>com.infinite.jsf.admin.model.Claim</property-class>
+            <property-class>com.infinite.jsf.provider.model.Claim</property-class>
             <value>#{claim}</value>
         </managed-property>
 
         <managed-property>
             <property-name>provider</property-name>
-            <property-class>com.infinite.jsf.admin.model.Provider</property-class>
+            <property-class>com.infinite.jsf.provider.model.Provider</property-class>
             <value>#{provider}</value>
         </managed-property>
 
         <managed-property>
             <property-name>recipient</property-name>
-            <property-class>com.infinite.jsf.admin.model.Recipient</property-class>
+            <property-class>com.infinite.jsf.recepient.model.Recipient</property-class>
             <value>#{recipient}</value>
         </managed-property>
 
         <managed-property>
             <property-name>subscribe</property-name>
-            <property-class>com.infinite.jsf.admin.model.Subscribe</property-class>
+            <property-class>com.infinite.jsf.insurance.model.Subscribe</property-class>
             <value>#{subscribe}</value>
         </managed-property>
     </managed-bean>
@@ -92,7 +92,7 @@
 </managed-bean>
 <managed-bean>
     <managed-bean-name>claimHistory</managed-bean-name>
-    <managed-bean-class>com.infinite.jsf.admin.model.ClaimHistory</managed-bean-class>
+    <managed-bean-class>com.infinite.jsf.provider.model.ClaimHistory</managed-bean-class>
     <managed-bean-scope>session</managed-bean-scope>
 </managed-bean>
 
@@ -115,7 +115,7 @@
     
       <managed-property>
         <property-name>claimHistory</property-name>
-        <property-class>com.infinite.jsf.admin.model.ClaimHistory</property-class>
+        <property-class>com.infinite.jsf.provider.model.ClaimHistory</property-class>
         <value>#{claimHistory}</value>
         
     </managed-property>

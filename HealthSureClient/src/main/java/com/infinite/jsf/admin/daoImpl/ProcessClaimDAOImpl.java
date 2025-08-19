@@ -1,11 +1,12 @@
 package com.infinite.jsf.admin.daoImpl;
 
 import com.infinite.jsf.admin.dao.ProcessClaimDAO;
-import com.infinite.jsf.admin.model.Claim;
-import com.infinite.jsf.admin.model.ClaimHistory;
-import com.infinite.jsf.admin.model.ClaimStatus;
 import com.infinite.jsf.admin.model.PaymentHistory;
 import com.infinite.jsf.admin.model.PaymentStatus;
+import com.infinite.jsf.provider.model.Claim;
+import com.infinite.jsf.provider.model.ClaimHistory;
+import com.infinite.jsf.provider.model.ClaimStatus;
+
 import java.util.List;
 
 import org.hibernate.Query;
